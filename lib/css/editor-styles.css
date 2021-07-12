@@ -1,9 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200;300;400;500;600;700;800;900&display=swap');
-
 /* Variables */
 :root {
-    --editor-bg: #eee;
-    --editor-border: #3f87a6;
+    --editor-bg: #eeeeee;
+    --editor-border: rgb(63, 135, 166);
 }
 
 /* Reset Styles */
@@ -12,7 +10,6 @@
     margin: 0;
     box-sizing: border-box;
 }
-
 html, body {
     height: 100%;
     width: 100%;
@@ -29,52 +26,87 @@ html, body {
 
 .editor__wrapper {
     width: 50%;
-    height: 70%;
+    height: 72%;
     display: flex;
     flex-direction: column;
     background: var(--editor-bg);
-    padding: 2em;
+    padding: .8em;
     border-radius: 3px;
-    border: 1px solid #ccc;
+    border: 2px solid #c0b9b9d2; 
+
+    /* SHADOW EFFECT AROUND BOX-WRAPPER */
+    /* -webkit-box-shadow: 15px 0px 10px -10px rgba(0,0,0,0.51);
+    -moz-box-shadow: 15px 0px 10px -10px rgba(0,0,0,0.51);
+    box-shadow: 15px 15px 10px -10px rgba(0,0,0,0.51); */
 }
 
-.editor__language--dropdown {
+.editor__header {
+    display: flex;
+}
+
+.editor__header--left {
+    margin-bottom: .9em;
     display: flex;
     flex-direction: row;
-    margin-bottom: 2em;
+    cursor: pointer;
+    position: relative;
+}
+  
+.editor__language select{
+    padding-left: 5px;
+    height: 30px;
+    width: 120px;
+    font-size: 1em;
+    cursor: pointer;
+    position: relative;
 }
 
-.editor__body {
+.editor__body{
     flex: 1;
+    position: relative;
 }
 
 .editor__footer {
     display: flex;
+    margin-top: 1em;
+    position: relative;
+   
+    /* width: 100%;
+    height: 130px;
+    margin-top: .9em;
+    border: 1px solid var(--editor-border);
+    overflow: auto; */
 }
 
 .editor__footer--left {
-    display: flex;
-    flex-direction: column;
+    flex: 1;
+    margin-right: 10px;
+    overflow: hidden;
 }
 
 .editor__footer--right {
-    flex: 1;
-    margin-left: 10px;
-    overflow: hidden;
+    margin-top: .9em;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
 }
 
 .editor__btn {
     border: 0;
     padding: .5em;
-    background-color: wheat;
-    border: 2px solid #333;
-    margin-top: 1em;
-    width: 100px;
+    background-color: black;
+    border: 2px solid #000000;
+    color: #ffffff;
+    margin-bottom: 4em;
+    margin-left: .4em;
+    width: 80px;
     cursor: pointer;
+    overflow: auto;
+    align-items: flex-start;
 }
 
 .editor__console {
-    background-color: #fff;
+    background-color: #ffffff;
     width: 100%;
     height: 130px;
     margin-top: .9em;
@@ -84,62 +116,10 @@ html, body {
 
 .editor__code {
     position: relative;
-    height: 100%;
+    height: 300px;
     width: 100%;
-    top: 0;
     bottom: 0;
     left: 0;
     right: 0;
     border: 1px solid var(--editor-border);
-}
-
-/* Editor Console Logs */
-.editor__console-logs {
-    padding: 10px;
-    list-style: none;
-}
-
-.editor__console-logs li pre {
-    font-size: .9em;
-    font-family: Inconsolata, sans-serif;
-}
-
-.ace_gutter {
-    border-left: 5px solid var(--editor-border);
-}
-
-.log--default {
-    color: #000;
-}
-
-.log--string {
-    color: #48BF0A;
-}
-
-.log--number {
-    color: #48BF0A;
-}
-
-.log--boolean {
-    color: blue;
-}
-
-.log--undefined {
-    color: grey;
-}
-
-.log--error {
-    color: red;
-}
-
-.log--object {
-    color: darkcyan;
-}
-
-.log--array {
-    color: darkblue;
-}
-
-.log--function {
-    color: yellow;
 }
