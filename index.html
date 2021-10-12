@@ -2,102 +2,58 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Code Editor</title>
-    <link rel="stylesheet" href="lib/css/editor-styles.css">
-
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            background: #e1e1e1;
+        }
+        .header{
+            font-size: 1.5em;
+            text-align: center;
+            margin-top: 10px;
+        }
+        .container{
+            width: 100%;
+            height: 85vh;
+            display: inline-flex;
+        }
+        #editor{
+            width: 50%;
+            height: 100%;
+            margin: 10px;
+            padding: 5px;
+            background: #fff;
+            border: 2px solid blue;
+        }
+        #viewer{
+            width: 50%;
+            height: 100%;
+            margin: 10px;
+            padding: 5px;
+            background: #fff;
+            border: 2px solid blue;
+        }
+    </style>
 </head>
 <body>
-    <div class="editor">
-        <div class="editor__wrapper">
-
-            <!-- HEADER -->
-            <div class="editor__header">
-
-                <!-- Language Option -->
-                <div class="editor__header--left">
-                    <div class="editor__language">
-                        <select name="lang" id="lang" onchange="changeFunc();">
-                            <option value="C++"> C++ </option>
-                            <option value="C"> C </option>
-                            <option value="Java"> Java </option>
-                            <option value="Kotlin"> Kotlin </option>
-                            <option value="Python"> Python </option>
-                            <option value="PHP"> PHP </option>
-                            <option value="JS"> JavaScript </option>
-                        </select>
-                    </div>
-                </div>
-
-                <!-- Settings & Resize Window -->
-                <!-- <div class="editor__header--right">
-
-                    <img class="coding-problem-ide-settings-image" src="s2" alt="Settings">
-
-
-                </div> -->
-
-            </div>
-
-            <!-- BODY -->
-            <div class="editor__body">
-                <div id="editorCode" class="editor__code"></div>
-            </div>
-            
-            <!-- FOOTER -->
-            <div class="editor__footer">
-
-                <!-- Footer Left -->
-                <div class="editor__footer--left">
-                    <textarea name="paragraph" id="hiddenCustomInput" style="display: none;" rows="5" cols="40" placeholder="Input Goes Here..."></textarea>
-                    
-                </div>
-
-                <!-- Footer Right -->
-                <div class="editor__footer--right">
-                    <label>Custom Input
-                        <input name="userinput" type="checkbox" onchange="onCheckboxChanged(this.checked)">
-                    </label>
-                    <button class="editor__btn editor__reset" id="fade-out-console">Reset</button>
-                    <button class="editor__btn editor__run" id="fade-in-console">Run</button>
-                </div>
-            </div>
-
-            <!-- BOTTOM -->
-            <div class="editor__bottom">
-                <div id="editorconsole" style="display: none;" class="editor__console">
-                    <ul class="editor__console-logs">
-                    </ul>
-                </div>
-            </div>
-        </div>
+    <div class="header">
+        <b>Code Editor</b>
+        <p>Write your HTML, CSS & JS code here</p>
+    </div>
+    <div class="container">
+        <textarea id="editor" oninput="runCode()"></textarea>
+        <iframe id="viewer"></iframe>
     </div>
 
-    <!-- Required Ace Libraries -->
-    <script src="lib/js/ace/ace.js"></script>
-    <script src="lib/js/ace/ext-language_tools.js"></script>
-
-    <!-- Required ACE languages -->
-    <script src="lib/js/ace/mode-c_cpp.js"></script>
-    <script src="lib/js/ace/mode-java.js"></script>
-    <script src="lib/js/ace/mode-kotlin.js"></script>
-    <script src="lib/js/ace/mode-python.js"></script>
-    <script src="lib/js/ace/mode-php.js"></script>
-    <script src="lib/js/ace/mode-javascript.js"></script>
-    
-
-    <!-- Custom Scripts -->
-    <script src="lib/js/editor.js"></script>
-    <script src="lib/jquery-3.5.1.min.js"></script>
-
     <script>
-        $('#fade-in-console').click(function(){
-            $('#editorconsole').fadeIn('fast');
-        });
-        $('#fade-out-console').click(function(){
-            $('#editorconsole').fadeOut('fast');
-        });
+        function runCode() {
+            var code = document.getElementById("editor").value;
+            document.getElementById("viewer").srcdoc = code;
+        }
     </script>
-    
 </body>
 </html>
